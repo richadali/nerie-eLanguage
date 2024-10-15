@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  
+  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/base.css}" />
+  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+  
+  <script th:src="@{/js/popper.min.js}"></script>	
+  <script th:src= "@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/main.min.js}"></script>
+  <script th:src="@{/js/dashboard.js}"></script>
+
+
+<title>Dashboard</title>
+</head>
+
+<body>
+
+	<div class="wrapper">
+	<div th:replace="~{sidebar :: sidebar}">	  </div>
+
+ 	<div class="container-fluid">
+ 		
+	<div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
+	
+		<div class="container justify-content-center">
+			<br>
+		<div class="heading-custom">
+			<section class="center"><h3>DASHBOARD</h3></section>
+		</div>
+
+		<div class="">
+		<br><br>
+		<div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img th:src="@{/images/circle.png}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Number of Users <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5">10</h2>
+                    <h6 class="card-text"></h6>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img th:src="@{/images/circle.png}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Number of words<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5">6000</h2>
+                    <h6 class="card-text"></h6>
+                  </div>
+                </div>
+                </div>
+                
+                <div class="col-md-4 stretch-card grid-margin">            
+	                <div class="card bg-gradient-danger card-img-holder text-white">
+	                  <div class="card-body">
+	                    <img th:src="@{/images/circle.png}" class="card-img-absolute" alt="circle-image" />
+	                    <h4 class="font-weight-normal mb-3">Number of Categories<i class="mdi mdi-chart-line mdi-24px float-right"></i>
+	                    </h4>
+	                    <h2 class="mb-5">60</h2>
+	                    <h6 class="card-text"></h6>
+	                  </div>
+	                </div>
+			  </div>	
+		</div>
+		</div>
+			
+		</div>	
+	</div>	
+	</div>				
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+        <div th:fragment="sidebar" class="nav-custom">
+        <div class="">
+            <nav id="sidebar" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+            	<br>
+            
+		     	<div class="">
+		     		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><img th:src="@{/images/icon.jpg}" alt="sign bank logo" width="100px">
+		     	</div>
+		     	<br><br>
+			     
+                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+
+			      <li>
+					   <a class="nav-link" href="@{/dashboard}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		               <i class="fa fa-home fa-fw icon-color"></i> <span>Home</span>
+					   </a>
+	
+			      </li>
+
+		            <li class="nav-item dropdown">
+		              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		               <i class="fa fa-user-circle fa-fw icon-color"></i> <span> Profile</span>
+		              </a>
+		              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                <a class="dropdown-item" th:href="@{/nerie/e-resources/user-profile}">My profile</a>
+		                <div class="dropdown-divider"></div>
+		                <a class="dropdown-item" th:href="@{/nerie/e-resources/change-password}">Change Password</a>
+		              </div>
+		            </li>
+		            
+			      <li sec:authorize="hasAnyRole('SUPERADMIN','ADMIN')" class="nav-item dropdown">
+			      
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <i class="fa fa-users fa-fw icon-color"></i> <span>User Management</span>
+			        </a>
+
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" th:href="@{/nerie/e-resources/create-user}">Create user</a>
+			          <div class="dropdown-divider"></div>
+			          <a class="dropdown-item" th:href="@{/nerie/e-resources/get-list-users}">Get List of Users</a>
+			          <div class="dropdown-divider"></div>
+			        </div>
+			        
+			      </li>	
+			      <li sec:authorize="hasAnyRole('ADMIN','CONTENTMANAGER','CONTENTMODERATOR')" class="nav-item dropdown">
+			      
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <i class="fa fa-list fa-fw icon-color"></i> <span>Content Management</span>
+			        </a>
+
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/nerie/e-resources/add-category}">Add new Category</a>
+			           <div class="dropdown-divider"></div>
+			          <a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/nerie/e-resources/get-categories}">Get List of Categories</a>
+			           <div class="dropdown-divider"></div>
+			        </div>
+			        
+			      </li>	
+			      
+			       <!--  li sec:authorize="hasAnyRole('ADMIN','CONTENTMANAGER','CONTENTMODERATOR')" class="nav-item dropdown">
+			      
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <i class="fa fa-list fa-fw icon-color"></i> <span>Inbox</span>
+			        </a>
+
+			        <div sec:authorize="hasAnyRole('ADMIN','CONTENTMODERATOR')" class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" th:href="@{/nerie/e-resources/get-list-inbox-cm}">To do List</a>
+			          <div class="dropdown-divider"></div>
+			        </div>
+			        
+			      </li-->
+			      
+			      
+			      <li class="nav-item dropdown">
+			      
+			        <a sec:authorize="hasAnyRole('SUPERADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <i class="fa fa-list fa-fw icon-color"></i> <span>Logs</span>
+			        </a>
+
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" th:href="@{/nerie/e-resources/get-list-login-activities}">Login Activities Logs</a>
+			          <div class="dropdown-divider"></div>
+			        </div>
+			        
+			      </li>
+			      <br><br><br><br>
+			     <li class="bg-light"><img th:src="@{/images/NIC.png}" alt="NIC logo" width="100px">
+		  		<img th:src="@{/images/digital-india.png}" alt="digital india logo" width="100px"></li>
+		  		</ul>
+
+            </nav>
+            </div>
+        </div>
+</body>
+</html>
+   
+ 

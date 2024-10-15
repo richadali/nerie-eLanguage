@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+	  <meta charset="UTF-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	  <meta th:name="_csrf" th:content="${_csrf.token}"/>
+	  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+	  
+	  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	  <link rel="stylesheet" th:href="@{/css/base.css}" />
+	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+	  
+	  <script th:src="@{/js/popper.min.js}"></script>	
+	  <script th:src= "@{/js/jquery.min.js}"></script>
+	  <script th:src="@{/js/main.min.js}"></script>
+	  <script th:src="@{/js/dashboard.js}"></script>
+	  <script th:src= "@{/ajax/add-category.js}"></script>
+	  
+	  
+	<title>Add Category</title>
+</head>
+
+<body>
+<div class="wrapper">
+	<div th:replace="~{sidebar :: sidebar}">	  </div>
+
+ 	<div class="container-fluid">
+ 		
+	<div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
+	
+		<div class="container justify-content-center">
+			<br>
+
+			<div class="heading-custom">
+				<section class="center"><h3>ADD NEW CATEGORY</h3></section>
+			</div>
+				<div class="center">
+				<br>
+
+				<form id="add-category" method="post">
+					<div class="row">
+						<div class="col-2"><label for="Category">Category: <span class="imp">*</span></label></div>
+						<div class="col-8">
+							<input type = "text" class="form-control" id="category" name="category" placeholder="Enter new Category:" maxlength=250 required><br><br>
+						</div>
+					</div>
+					<div class="container">
+						<div class="text-center">
+								<input id="add-category-button" class="edit" type = "submit" value="SAVE">
+								<input id="reset" type = "reset" class="edit" value="RESET">
+						</div>
+					</div>
+
+				</form>
+				<br>
+				
+				<!-- Success Confirmation Modal-->
+					<div id="successModal" class="modal" role="dialog">
+					  <div class="modal-dialog alert-success" role="document">
+					    <div class="modal-content">
+					    <div class="alert-success">
+					      <div class="modal-header">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <h5 class="modal-title"></h5>
+					      </div>
+					      <div class="modal-body">
+					        <p id="success"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button id ="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					    </div>
+					  </div>
+					</div>
+					
+					
+					<!-- Failure Confirmation Modal-->
+					<div id="failureModal" class="modal" role="dialog">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					    <div class="alert-danger">
+					      <div class="modal-header">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <h5 class="modal-title"></h5>
+					      </div>
+					      <div class="modal-body">
+					        <p id="failure"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button id ="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			
+				<br>	
+		</div>
+		
+	</div>
+	</div>
+</body>
+</html>

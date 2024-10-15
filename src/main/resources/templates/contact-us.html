@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact us</title>  
+ 	 <link rel="stylesheet" th:href="@{/css/style2.css}" />
+	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	  <link rel="stylesheet" th:href="@{/css/base.css}" />	
+</head>
+<body>
+   <div th:insert="~{navbar :: navbar}">  </div>
+	<section class = "center">
+   			<h3>CONTACT US</h3>
+	<br>	
+	<div class="text-justify">
+		<p class="fw-bold">Contact Details of the Office of the State Commissioner for Persons with Disabilities, Meghalaya<p>
+		<p>Smt. Sabrella B. Marak, MCS</p>
+		<p>Commissioner for Persons with Disabilities</p>
+		<p>Contact Number: 0364-2506521</p>
+		<p>Email Address: cpwdmeg [at] gmail [dot] com</p>
+	</div>
+	</section>
+	<div th:insert="footer :: footer"></div>
+</body>
+</html>

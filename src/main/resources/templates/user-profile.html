@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	  <meta charset="UTF-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	  <meta th:name="_csrf" th:content="${_csrf.token}"/>
+	  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+	  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	  <link rel="stylesheet" th:href="@{/css/base.css}" />
+	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+
+	  <script th:src="@{/js/popper.min.js}"></script>	
+	  <script th:src= "@{/js/jquery.min.js}"></script>  	  
+	  <script th:src="@{/js/main.min.js}"></script>
+	  <script th:src="@{/js/dashboard.js}"></script>
+	  <script th:src= "@{/ajax/get-user-by-username.js}"></script>
+	  <title>List of Users</title>
+</head>
+
+<body>
+<div class="wrapper">
+	<div th:replace="~{sidebar :: sidebar}">	  </div>
+
+ 	<div class="container-fluid">
+ 		
+	<div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
+	
+		<div class="container justify-content-center">
+			<br>
+
+		<div class="heading-custom center">
+			<h3>MY PROFILE</h3>
+		</div>
+		<br>
+			<!-- User Profile -->
+			<table>		 
+				 <thead>
+				    <tr>
+				      <th scope="col">Username</th>
+				      <th scope="col">First Name</th>
+				      <th scope="col">Middle Name</th>
+				      <th scope="col">Last Name</th>
+				      <th scope="col">Role</th>
+				      <th scope="col">Account active Status</th>
+				    </tr>
+				   </thead>
+				   
+				   <tbody id="userInfo">
+					   
+				  </tbody>
+			</table>
+			<br>
+			<div class="heading-custom center"><h1>OTHER INFORMATION</h1></div>
+			<br>
+			<table>		 
+				 <thead>
+	
+					    <tr>
+					      <th scope="col">Office</th>
+					      <th scope="col">OfficeAddress</th>
+					      <th scope="col">Designation</th>
+					      <th scope="col">Phone No</th>
+
+					    </tr>
+				   </thead>
+				   
+				   <tbody id="otherInfo">
+					   
+				  </tbody>
+			</table>
+	
+		</div>
+		</div>
+		</div>
+</body>
+</html>

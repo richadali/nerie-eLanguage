@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	  <meta charset="UTF-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	  <meta th:name="_csrf" th:content="${_csrf.token}"/>
+	  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+	  
+	  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	  <link rel="stylesheet" th:href="@{/css/base.css}" />
+	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+
+	  <script th:src="@{/js/popper.min.js}"></script>	
+	  <script th:src= "@{/js/jquery.min.js}"></script>	  	  
+	  <script th:src="@{/js/main.min.js}"></script>
+	  <script th:src="@{/js/dashboard.js}"></script>
+	  <script th:src= "@{/ajax/inbox-cm.js}"></script>
+	  
+	  <title>List of words</title>
+</head>
+
+<body>
+ 	
+		<div class="wrapper">
+	<div th:replace="~{sidebar :: sidebar}">	  </div>
+
+ 	<div class="container-fluid">
+ 		
+	<div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
+	
+		<div class="container justify-content-center">
+			<br>
+			<div class="heading-custom">
+				<section class="center"><h3>LIST OF INCOMPLETE WORDS</h3></section>
+			</div>
+			<br>
+
+				<div class="row">
+				<div class="col-2"><label for="pages">Pages:</label></div>
+				<div class="col-4">
+					<select name="pages" id="pages" class="form-control">
+						
+					</select>
+				</div>
+				<br>
+				<br>
+				
+				<div class="col-2"><label for="pagesSize">Page Size:</label></div>
+				<div class="col-4">
+					<select name="pagesSize" id="pagesSize" class="form-control">
+						
+					</select>
+				</div>
+				<br><br>
+					<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center">
+					 <div class="row">
+				        <div class="input-group col-md-4">
+				            <input class="form-control py-2" type="search" value="search" id="searchvalue">
+				            <span class="input-group-append">
+				                <button class="btn btn-outline-secondary" type="button" id="search">
+				                    <i class="fa fa-search"></i>
+				                </button>
+				            </span>
+				        </div>
+				    </div>
+				</div>
+				<br>
+			
+		</div>
+		<br>
+		<br>
+		<table>
+		  <thead>
+			    <tr>
+			      <th scope="col">S.No</th>
+			      <th scope="col">English</th>
+			      <th scope="col">Khasi</th>
+			      <th scope="col">Garo</th>
+			      <th scope="col">Category</th>
+			      <th scope="col">YouTube Links</th>
+			      <th scope="col">Status</th>
+			      <th scope="col">Remarks</th>
+			      <th scope="col">Edit</th>
+			      <th scope="col">Status</th>
+			    </tr>
+		   </thead>
+		   
+		   <tbody id="wordList">
+		   
+		  </tbody>
+		</table>
+		<br>
+
+		  <div class="modal fade" id="task-allotment-modal" role="dialog">
+			    <div class="modal-dialog  modal-xl">
+			    
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">TASK ALLOTMENT</h4>
+			        </div>
+			        <div class="modal-body">
+			       
+			       <form id="task-allotment" method="post">
+						<div class="row">
+							<div class="col-2"><label for="task">Task:</label></div>
+							<div class="col-8">
+								<input type="checkbox" value="TSK0001" data-id="task">
+								<label for="Khasi Translation"> Khasi Translation</label><br>
+								<input type="checkbox" value="TSK0002" data-id="task">
+								<label for="Garo translation"> Garo Translation</label><br>
+								<input type="checkbox" value="TSK0003" data-id="task">
+								<label for="YouTubeLnk Updater"> YouTubeLink Updater</label><br>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-2"><label for="task">Task:</label></div>
+								<div class="col-8">
+									<input type ="text" name= "remarks" id="remarks"></input>
+								</div>
+						</div>
+	
+						<br><br>
+						<div class="container">
+							<div class="text-center">
+									<input class="edit" type = "submit" value="SAVE">
+									<input id="reset" type = "reset" class="edit" value="RESET">
+							</div>
+						</div>
+						<br>
+				</form>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+		   </div>
+		
+		  				
+					<!-- Success Confirmation Modal-->
+					<div id="successModal" class="modal" role="dialog">
+					  <div class="modal-dialog alert-success" role="document">
+					    <div class="modal-content">
+					    <div class="alert-success">
+					      <div class="modal-header">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <h5 class="modal-title"></h5>
+					      </div>
+					      <div class="modal-body">
+					        <p id="success"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button id ="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					    </div>
+					  </div>
+					</div>
+					
+					
+					<!-- Failure Confirmation Modal-->
+					<div id="failureModal" class="modal" role="dialog">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					    <div class="alert-danger">
+					      <div class="modal-header">
+					      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <h5 class="modal-title"></h5>
+					      </div>
+					      <div class="modal-body">
+					        <p id="failure"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button id ="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+		</div>
+		</div>
+	</div>
+
+</body>
+</html>
