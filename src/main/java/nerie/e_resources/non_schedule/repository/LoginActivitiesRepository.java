@@ -12,7 +12,7 @@ import nerie.e_resources.non_schedule.entity.LoginActivities;
 
 @Repository
 public interface LoginActivitiesRepository extends JpaRepository<LoginActivities, Long> {
-	@Query(value = "SELECT * FROM login_activities t WHERE userid=:id ORDER BY t.id DESC LIMIT 1", nativeQuery = true)
+	@Query(value = "SELECT * FROM elearning.login_activities t WHERE userid=:id ORDER BY t.id DESC LIMIT 1", nativeQuery = true)
 	List<LoginActivities> findByUserid(@Param("id") UUID id);
 
 }

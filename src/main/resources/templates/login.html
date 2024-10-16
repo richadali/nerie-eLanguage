@@ -11,34 +11,34 @@
 	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 	  <link rel="stylesheet" th:href="@{/css/base.css}" />
 	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
-	  
-	  <script th:src="@{/js/popper.min.js}"></script>	
+
+	  <script th:src="@{/js/popper.min.js}"></script>
 	  <script th:src= "@{/js/jquery.min.js}"></script>
 	  <script th:src="@{/js/main.min.js}"></script>
 	  <script th:src="@{/js/jsencrypt.min.js}"></script>
 	  <script th:src="@{/js/login.js}"></script>
 	  <script th:src="@{/js/publickey.js}"></script>
-	 
+
 </head>
-  
+
 	</head>
-	
+
 <body>
-	
+
 	<div th:insert="~{navbar :: navbar}">  </div>
-	
+
 	<!-- error message -->
 	<div th:if="${param.error}">
 		<div class="alert alert-danger">Invalid username/password or Captcha</div>
 	</div>
-	
+
 	<div class="b-bg-image">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 d-flex">
 					<div class="d-block px-5 pt-5 pb-4 border-bottom-0">
-						<h1 class="text-right mt-5 text-custom">Meghalaya Sign Bank</h1>
-						<h4 class="text-custom"> (A variety of Indian Sign Language)</h4>
+						<h1 class="text-right mt-5 text-custom">Language e-resources</h1>
+						<h4 class="text-custom"> in Non-scheduled Language (North East Region)</h4>
 					</div>
 				</div>
 
@@ -59,7 +59,7 @@
 								<input id="password" type="password" class="form-control" placeholder="Enter password" name="password" maxlength="250" required title="Password is required. Minimum 6 and maximum 250 characters is allowed.">
 							</div>
 							</br>
-							
+
 							<div class="row">
 								<div class="col-6 mx-auto">
     								<div class="d-flex align-items-center justify-content-evenly">
@@ -73,22 +73,22 @@
 								<label for="captcha" class="text-custom">Enter captcha:</label>
 								<input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha" maxlength="6" required>
 							</div>
-							
+
 							<input type="hidden" name="${_csrf_header}" value="${_csrf}" />
 
 							<div class="text-center py-4">
 								<button  type="submit" class="btn btn-primary b-btn">Log In</button>
 							</div>
-							
+
 						</form>
 					</div>
 				</div>
 
 			</div>
-		</div>				
+		</div>
 	</div>
 	<div th:insert="~{footer :: footer}">  </div>
-	
+
 
 </body>
 </html>

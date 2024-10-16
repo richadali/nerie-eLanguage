@@ -16,19 +16,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Category {
+public class Language {
 
-	@Id
-	@NotNull
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotNull
-	@Size(max = 250, message = "Category Name should have maximum 250 characters")
-	private String categoryName;
+    @NotNull
+    @Size(max = 250, message = "Language Name should have maximum 250 characters")
+    private String languageName;
 
-	@ManyToOne
-	@JoinColumn(name="main_category_id" , referencedColumnName = "id")
-	private MainCategory mainCategory;
+    @ManyToOne
+    @JoinColumn(name="state_id" , referencedColumnName = "id")
+    private State stateId;
 
 }
