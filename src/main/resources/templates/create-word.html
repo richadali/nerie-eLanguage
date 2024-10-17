@@ -12,79 +12,121 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/datatable.css}" />
 
     <script th:src="@{/js/popper.min.js}"></script>
     <script th:src= "@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/main.min.js}"></script>
     <script th:src="@{/js/jsencrypt.min.js}"></script>
     <script th:src="@{/js/publickey.js}"></script>
+    <script th:src="@{/js/datatable.js}"></script>
     <script th:src="@{/js/dashboard.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
     <script th:src= "@{/ajax/create-word.js}"></script>
     <title>English Words/Sentences</title>
 </head>
 <body>
-    <div class="wrapper">
-        <div th:replace="~{sidebar :: sidebar}">	  </div>
-        <div class="container-fluid">
-            <div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
-            <div class="container" th:fragment="content">
-                <div class="heading-custom">
-                    <section class="center"><h3>Input English Words/Sentences</h3></section>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12">
+<div class="wrapper">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+    <div class="container-fluid">
+        <div th:insert="~{navbar-menu :: navbar-menu}"></div>
+        <div class="container" th:fragment="content">
+            <div class="heading-custom">
+                <section class="center"><h3>Input English Words/Sentences</h3></section>
+            </div>
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-<!--                                <div class="d-flex align-items-center mb-4">-->
-<!--                                    <h4 class="card-title">English Words/Sentences</h4>-->
-<!--                                    <div class="ms-auto">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-                                <div class="mb-3">
-                                    <form>
-                                        <div class="row align-items-center">
-                                            <div class="mb-5 row">
-                                                <label for="catSelect" class="col-sm-4 col-form-label">Main Category</label>
-                                                <div class="col-sm-8">
-                                                    <select id="catSelect" class="form-select">
-                                                        <option selected disabled>Select Main Category</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-5 row">
-                                                <label for="subSelect" class="col-sm-4 col-form-label">Category</label>
-                                                <div class="col-sm-8">
-                                                    <select id="subSelect" class="form-select">
-                                                        <option selected disabled>Select Category</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-5 row">
-                                                <label for="subSubSelect" class="col-sm-4 col-form-label">Sub Category</label>
-                                                <div class="col-sm-8">
-                                                    <select id="subSubSelect" class="form-select">
-                                                        <option selected disabled>Select Sub Category</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <label for="wSname" class="col-sm-4 col-form-label">Word/Sentence</label>
-                                                <div class="col-sm-8">
-                                                    <textarea class="form-control" id="wSname" placeholder="Word/Sentence"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="border border-0 center mt-5">
-                                                <input type="submit" name="submit" value="Add" class="btn btn-primary">
-                                            </div>
+                                <!-- Bordered Tabs Justified -->
+                                <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="myTab" role="tablist">
+                                    <li class="nav-item flex-fill" role="presentation">
+                                        <button class="nav-link w-100 active" id="view-words-tab" data-bs-toggle="tab"
+                                                data-bs-target="#view-words" type="button" role="tab"
+                                                aria-controls="view-words" aria-selected="true"><i class="bi bi-card-list"></i>
+                                            &nbsp; View Words</button>
+                                    </li>
+                                    <li class="nav-item flex-fill" role="presentation">
+                                        <button class="nav-link w-100" id="add-word-tab" data-bs-toggle="tab"
+                                                data-bs-target="#add-word" type="button" role="tab"
+                                                aria-controls="add-word" aria-selected="false"><i class="ri-file-add-line"></i>
+                                            &nbsp; Add New Word/Sentence</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+                                    <div class="tab-pane fade show active" id="view-words" role="tabpanel" aria-labelledby="view-words-tab">
+                                        <div class="alert alert-success alert-block table_msg3 d-none">
+                                            <strong>Data deleted successfully</strong>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="alert alert-danger table_msg4 d-none">
+                                            <strong>Whoops!</strong> There were some problems with the application.
+                                        </div>
+                                        <table id="wordsTable" class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center text-primary" scope="col" width="5%">#</th>
+                                                <th class="text-center text-primary" scope="col" width="20%">Word/Sentence</th>
+                                                <th class="text-center text-primary" scope="col" width="20%">Category</th>
+                                                <th class="text-center text-primary" scope="col" width="20%">Sub Category</th>
+                                                <th class="text-center text-primary" scope="col" width="20%">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- Dynamic data will be populated here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="add-word" role="tabpanel" aria-labelledby="add-word-tab">
+                                        <div class="mb-3">
+                                            <form id="add-word-form">
+                                                <div class="row align-items-center">
+                                                    <div class="mb-5 row">
+                                                        <label for="catSelect" class="col-sm-4 col-form-label">Main Category</label>
+                                                        <div class="col-sm-8">
+                                                            <select id="catSelect" class="form-select">
+                                                                <option selected disabled>Select Main Category</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-5 row">
+                                                        <label for="subSelect" class="col-sm-4 col-form-label">Category</label>
+                                                        <div class="col-sm-8">
+                                                            <select id="subSelect" class="form-select">
+                                                                <option selected disabled>Select Category</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-5 row">
+                                                        <label for="subSubSelect" class="col-sm-4 col-form-label">Sub Category</label>
+                                                        <div class="col-sm-8">
+                                                            <select id="subSubSelect" class="form-select">
+                                                                <option selected disabled>Select Sub Category</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="wSname" class="col-sm-4 col-form-label">Word/Sentence</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea class="form-control" id="wSname" placeholder="Word/Sentence"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="border border-0 center mt-5">
+                                                        <input type="submit" name="submit" value="Add" class="btn btn-primary">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- End Bordered Tabs Justified -->
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
+</div>
 </body>
 </html>

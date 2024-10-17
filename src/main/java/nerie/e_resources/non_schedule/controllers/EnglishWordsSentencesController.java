@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/nerie/e-resources/english-words")
 public class EnglishWordsSentencesController {
@@ -24,5 +26,11 @@ public class EnglishWordsSentencesController {
         EnglishWordsSentences createdEnglishWordSentence = englishWordsSentencesService.createEnglishWordSentence(dto);
         return new ResponseEntity<>(createdEnglishWordSentence, HttpStatus.OK);
 //        return ResponseEntity.ok(createdEnglishWordSentence);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<EnglishWordsSentences>> getAllEnglishWordsSentences() {
+        List<EnglishWordsSentences> wordsSentences = englishWordsSentencesService.getAllEnglishWordsSentences();
+        return new ResponseEntity<>(wordsSentences, HttpStatus.OK);
     }
 }

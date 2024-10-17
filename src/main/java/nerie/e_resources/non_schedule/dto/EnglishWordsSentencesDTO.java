@@ -8,13 +8,10 @@ import lombok.Setter;
 @Setter
 public class EnglishWordsSentencesDTO {
 
-    @NotNull
-    private String EnglishWord;
+    private String englishWord;
 
-    @NotNull
     private Long categoryId;
 
-    @NotNull
     private Long subCategoryId;
 
 

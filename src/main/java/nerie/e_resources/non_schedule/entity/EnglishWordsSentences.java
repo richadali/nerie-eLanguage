@@ -13,11 +13,9 @@ import lombok.*;
 @NoArgsConstructor
 public class EnglishWordsSentences {
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private String EnglishWord;
 
     @ManyToOne
