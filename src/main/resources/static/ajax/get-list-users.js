@@ -19,7 +19,7 @@ function getListUsers()
 		            xhr.setRequestHeader(header, token);
 		        },
                 success: function(res) {
-					alert(res);
+//					alert(res);
                 	var result = JSON.parse(res.split("/*").join("").split("*/").join(""));
                 	var userList='<tr>';
                 	
