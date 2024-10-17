@@ -53,6 +53,7 @@ public class SecurityConfig {
 		})
 
 				.authorizeHttpRequests(auth -> auth
+						.requestMatchers("/nerie/e-resources/english-words/create").permitAll()
 						.requestMatchers("/contact-us", "/nerie/e-resources/get-captcha",
 								"/nerie/e-resources/get-publickey", "/images/**", "/css/**", "/js/**", "/static/**",
 								"/resources/**", "/.*.png", "/.*.svg", "/.*.css", "/.*.js", "/.*.min.js", "/.*.ico",
@@ -62,7 +63,7 @@ public class SecurityConfig {
 								"/nerie/e-resources/get-list-users", "/nerie/e-resources/get-list-users-res",
 								"/nerie/e-resources/get-user-by-id", "/ajax/get-list-users.js", "/ajax/update-user.js",
 								"/nerie/e-resources/update-user", "/nerie/e-resources/enable-user",
-								"/nerie/e-resources/lock-unlock-user", "/nerie/e-resources/search-user")
+								"/nerie/e-resources/lock-unlock-user", "/nerie/e-resources/search-user","/nerie/e-resources/english-words/create")
 						.hasAnyRole("ADMIN", "SUPERADMIN")
 
 						.requestMatchers("/ajax/get-list-users-activities.js", "/get-list-login-activities",
@@ -78,6 +79,7 @@ public class SecurityConfig {
 //								"/nerie/e-resources/change-password", "/ajax/get-user-by-username.js",
 //								"/nerie/e-resources/get-user-by-username")
 						.anyRequest().authenticated()
+
 
 				).formLogin(formLogin -> formLogin.loginPage("/login").permitAll().loginProcessingUrl("/login/process")
 						.successHandler(new AuthenticationSuccessHandler() {

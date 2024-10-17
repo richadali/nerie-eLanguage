@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/sub-categories")
 public class SubCategoryController {
 
     private final SubCategoryService subCategoryService;
@@ -19,8 +19,9 @@ public class SubCategoryController {
         this.subCategoryService = subCategoryService;
     }
 
-    @GetMapping("/subcategories")
-    public ResponseEntity<List<SubCategory>> getSubCategories(@RequestParam Long categoryId) {
+    // GET API to fetch subcategories by Category ID
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<SubCategory>> getSubCategoriesByCategory(@PathVariable Long categoryId) {
         List<SubCategory> subCategories = subCategoryService.getSubCategoriesByCategoryId(categoryId);
         return ResponseEntity.ok(subCategories);
     }

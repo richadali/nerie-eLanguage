@@ -19,7 +19,7 @@
     <script th:src="@{/js/jsencrypt.min.js}"></script>
     <script th:src="@{/js/publickey.js}"></script>
     <script th:src="@{/js/dashboard.js}"></script>
-    <script th:src= "@{/ajax/create-user.js}"></script>
+    <script th:src= "@{/ajax/create-word.js}"></script>
     <title>English Words/Sentences</title>
 </head>
 <body>
@@ -48,10 +48,6 @@
                                                 <div class="col-sm-8">
                                                     <select id="catSelect" class="form-select">
                                                         <option selected disabled>Select Main Category</option>
-                                                        <option>
-                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
-                                                            <!--                                                    th:text="${center.centerName}"-->
-                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -60,10 +56,6 @@
                                                 <div class="col-sm-8">
                                                     <select id="subSelect" class="form-select">
                                                         <option selected disabled>Select Category</option>
-                                                        <option>
-                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
-                                                            <!--                                                    th:text="${center.centerName}"-->
-                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -72,26 +64,19 @@
                                                 <div class="col-sm-8">
                                                     <select id="subSubSelect" class="form-select">
                                                         <option selected disabled>Select Sub Category</option>
-                                                        <option>
-                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
-                                                            <!--                                                    th:text="${center.centerName}"-->
-                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class=" row">
+                                            <div class="row">
                                                 <label for="wSname" class="col-sm-4 col-form-label">Word/Sentence</label>
                                                 <div class="col-sm-8">
-                                                <textarea class="form-control" id="wSname" placeholder="Word/Sentence"
-                                                  value=""></textarea>
+                                                    <textarea class="form-control" id="wSname" placeholder="Word/Sentence"></textarea>
                                                 </div>
                                             </div>
                                             <div class="border border-0 center mt-5">
                                                 <input type="submit" name="submit" value="Add" class="btn btn-primary">
                                             </div>
-
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
