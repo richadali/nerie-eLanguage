@@ -2,9 +2,8 @@ $(document).ready(function () {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
 
-    // Fetch and populate Main Category dropdown
     $.ajax({
-        url: '/api/main-categories', // Assuming you have an API to fetch Main Categories
+        url: '/api/main-categories',
         method: 'GET',
         success: function (data) {
             let mainCategoryDropdown = $('#catSelect');
@@ -17,12 +16,11 @@ $(document).ready(function () {
         }
     });
 
-    // On change of Main Category, fetch Categories by Main Category ID
     $('#catSelect').on('change', function () {
         let mainCategoryId = $(this).val();
 
         $.ajax({
-            url: `/api/categories/main-category/${mainCategoryId}`, // Updated endpoint
+            url: `/api/categories/main-category/${mainCategoryId}`,
             method: 'GET',
             success: function (data) {
                 let categoryDropdown = $('#subSelect');
@@ -37,12 +35,11 @@ $(document).ready(function () {
         });
     });
 
-    // On change of Category, fetch Sub Categories
     $('#subSelect').on('change', function () {
         let categoryId = $(this).val();
 
         $.ajax({
-            url: `/api/sub-categories/category/${categoryId}`, // Updated to match new API path
+            url: `/api/sub-categories/category/${categoryId}`,
             method: 'GET',
             success: function (data) {
                 let subCategoryDropdown = $('#subSubSelect');
@@ -57,22 +54,18 @@ $(document).ready(function () {
         });
     });
 
-    // Submit form and save English word/sentence
     $('form').on('submit', function (e) {
-        e.preventDefault(); // Prevent the default form submission
+        e.preventDefault();
 
-        // Get the values from the form
         let englishWord = $('#wSname').val();
         let categoryId = $('#subSelect').val();
         let subCategoryId = $('#subSubSelect').val();
 
-        // Validate that the user has selected the required fields
         if (!englishWord || !categoryId || !subCategoryId) {
             alert('Please fill in all fields');
             return;
         }
 
-        // AJAX request to save the word/sentence
         $.ajax({
             url: '/nerie/e-resources/english-words/create',
             method: 'POST',
@@ -83,11 +76,10 @@ $(document).ready(function () {
                 subCategoryId: subCategoryId
             }),
             beforeSend: function(xhr) {
-                xhr.setRequestHeader(header, token); // Set the CSRF token in the request header
+                xhr.setRequestHeader(header, token);
             },
             success: function (response) {
                 alert('Word/Sentence saved successfully');
-                // Optionally, clear the form or reset dropdowns
                 $('#wSname').val('');
                 $('#subSelect').val('').change();
                 $('#subSubSelect').val('');

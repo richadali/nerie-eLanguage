@@ -4,23 +4,26 @@
 <body>
 	<nav th:fragment="navbar-menu" class="navbar navbar-expand-sm navbar-custom">    
 		<div class="collapse navbar-collapse " id="navbarSupportedContent">
-		<button type="button" id="sidebarCollapse" class="text-menu">
-                <i class="fas fa-align-left fa-lg"></i>
+		<button type="button" id="sidebarCollapse" class="text-menu border border-0 ms-2">
+                <i class="fas fa-bars fa-align-left fa-lg"></i>
             </button>
 		  <ul class="navbar-nav me-auto order-0 ">
 			<li class="nav-item">
 			&nbsp;&nbsp;
-			  <span class="fa fa-tachometer-alt text-menu fa-lg"></span> &nbsp;&nbsp;&nbsp;
-      	  	 <span sec:authorize="hasRole('ADMIN')"  class="text-uppercase text-menu fa-2x" >Admin</span> 
-      	  	 <span sec:authorize="hasRole('CM')"  class="text-uppercase text-menu fa-2x" >CONTENT MANAGER</span> 
+<!--			  <span class="fa fa-tachometer-alt text-menu fa-lg text-light"></span> &nbsp;&nbsp;&nbsp;-->
+				<span sec:authorize="hasRole('ADMIN')"  class="text-uppercase text-menu text-light" >ADMIN</span>
+				<span sec:authorize="hasRole('SUPERADMIN')"  class="text-uppercase text-menu text-light" >SUPER ADMIN</span>
+				<span sec:authorize="hasRole('CM')"  class="text-uppercase text-menu text-light" >CONTENT MANAGER</span>
 			</li>
 			
 		  </ul>
 			<div class="navbar-custom">
-		  <form th:action = "@{/logout}" th:method = "post">
-		        <input type="submit" class="nav-link dropdown-toggle text-menu navbar-custom fa-1x" value="Logout"/>
-		  </form>
-		  </div>
+				<form th:action="@{/logout}" th:method="post">
+					<button type="submit" class="nav-link text-menu navbar-custom fa-1x text-light border border-0">
+						<i class="fas fa-sign-out-alt" style="color: white;"></i> Logout
+					</button>
+				</form>
+			</div>
 		</div>
 	</nav>
 </body>

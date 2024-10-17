@@ -7,14 +7,15 @@
             font-family: 'Arial', sans-serif;
         }
         #sidebar {
-            background-color: #343a40;
+            background-color: #81c0c5;
             color: white;
+            position: fixed;
         }
         #sidebar .nav-link {
             color: white;
         }
         #sidebar .nav-link:hover {
-            background-color: #495057;
+            background-color: blue;
         }
         #sidebar .nav-item .dropdown-menu {
             background-color: #495057;
@@ -45,27 +46,35 @@
             width: 100px;
             margin: 5px;
         }
+        .icon-color {
+			font-size: 1.5rem; /* Adjust the size as needed */
+			margin-right: 10px; /* Adjust spacing between icon and text */
+		}
+		.nav-link {
+			padding: 0.5rem 1rem;
+		}
+
     </style>
 </head>
 <body>
-<div th:fragment="sidebar" class="nav-custom bg-dark">
+<div th:fragment="sidebar" class="nav-custom">
 	<nav id="sidebar" class="d-flex flex-column align-items-center px-3 py-4 min-vh-100">
-		<div class="mb-4 text-center">
-			<img th:src="@{/images/icon.jpg}" alt="sign bank logo" width="80px">
+		<div class="mb-4 rounded-circle p-2 text-left bg-light shadow-lg border border-2 border-primary">
+			<img th:src="@{/images/logo.png}" alt="NERIE logo" width="90px">
 		</div>
 
 		<ul class="nav nav-pills flex-column w-100 mb-auto align-items-start">
 			<li class="nav-item mb-3">
 				<a class="nav-link d-flex align-items-center" th:href="@{/dashboard}">
-					<i class="fas fa-home fa-fw icon-color"></i>
-					<span>Home</span>
+					<i class="fas fa-home fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Home</span>
 				</a>
 			</li>
 
 			<li class="nav-item dropdown mb-3">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-					<i class="fas fa-user-circle fa-fw icon-color"></i>
-					<span>Profile</span>
+					<i class="fas fa-user-circle fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Profile</span>
 				</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" th:href="@{/nerie/e-resources/user-profile}">My Profile</a>
@@ -76,8 +85,8 @@
 
 			<li sec:authorize="hasAnyRole('SUPERADMIN','ADMIN')" class="nav-item dropdown mb-3">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-					<i class="fas fa-users fa-fw icon-color"></i>
-					<span>User Management</span>
+					<i class="fas fa-users fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">User Management</span>
 				</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" th:href="@{/nerie/e-resources/create-user}">Create User</a>
@@ -88,8 +97,8 @@
 
 			<li sec:authorize="hasAnyRole('ADMIN','CONTENTMANAGER','CONTENTMODERATOR')" class="nav-item dropdown mb-3">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-					<i class="fas fa-list fa-fw icon-color"></i>
-					<span>Content Management</span>
+					<i class="fas fa-list fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Content Management</span>
 				</a>
 				<div class="dropdown-menu">
 					<a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/nerie/e-resources/add-category}">Add New Category</a>
@@ -100,15 +109,15 @@
 
 			<li class="nav-item mb-3">
 				<a class="nav-link d-flex align-items-center" th:href="@{/nerie/e-resources/create-word}">
-					<i class="fas fa-file-alt fa-fw icon-color"></i>
-					<span>Feed Word</span>
+					<i class="fas fa-file-alt fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Word Input</span>
 				</a>
 			</li>
 
 			<li sec:authorize="hasAnyRole('SUPERADMIN')" class="nav-item dropdown mb-3">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-					<i class="fas fa-list fa-fw icon-color"></i>
-					<span>Logs</span>
+					<i class="fas fa-list fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Logs</span>
 				</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" th:href="@{/nerie/e-resources/get-list-login-activities}">Login Activities Logs</a>
@@ -116,10 +125,10 @@
 			</li>
 		</ul>
 
-		<div class="bottom-logos">
-			<img th:src="@{/images/NIC.png}" alt="NIC logo">
-			<img th:src="@{/images/digital-india.png}" alt="Digital India logo">
-		</div>
+<!--		<div class="bottom-logos">-->
+<!--			<img th:src="@{/images/NIC.png}" alt="NIC logo">-->
+<!--			<img th:src="@{/images/digital-india.png}" alt="Digital India logo">-->
+<!--		</div>-->
 	</nav>
 </div>
 
