@@ -108,7 +108,7 @@ public class SecurityConfig {
 						.frameOptions(frameOptions -> frameOptions.sameOrigin()).cacheControl(Customizer.withDefaults())
 						.contentTypeOptions(Customizer.withDefaults())
 						.contentSecurityPolicy(csp -> csp.policyDirectives(
-								"script-src 'self'; form-action 'self'; style-src 'self';object-src 'self'"))
+								"script-src 'self'; form-action 'self'; style-src 'self'; object-src 'self'"))
 						.referrerPolicy(referrer -> referrer.policy(ReferrerPolicy.SAME_ORIGIN)));
 
 		;
