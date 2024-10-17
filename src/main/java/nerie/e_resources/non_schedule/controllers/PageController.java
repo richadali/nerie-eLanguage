@@ -40,6 +40,11 @@ public class PageController {
 		return "contact-us";
 	}
 
+	@GetMapping(value = "/english-word")
+	public String eng_word_sentences() {
+		return "create-word";
+	}
+
 	// Dashboard
 	@GetMapping(value = "/dashboard")
 	public String dashboard(HttpServletRequest req) {

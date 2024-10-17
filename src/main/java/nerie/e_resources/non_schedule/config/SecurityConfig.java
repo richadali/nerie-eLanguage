@@ -53,7 +53,7 @@ public class SecurityConfig {
 		})
 
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/contact-us", "/nerie/e-resources/get-captcha",
+						.requestMatchers("/contact-us", "/nerie/e-resources/get-captcha","/english-word",
 								"/nerie/e-resources/get-publickey", "/images/**", "/css/**", "/js/**", "/static/**",
 								"/resources/**", "/.*.png", "/.*.svg", "/.*.css", "/.*.js", "/.*.min.js", "/.*.ico",
 								"/webfonts/**", "/.*.woff2", "/403", "/404", "/500", "/error")
