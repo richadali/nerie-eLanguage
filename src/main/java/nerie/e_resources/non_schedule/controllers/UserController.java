@@ -47,6 +47,11 @@ public class UserController {
 		return "create-user";
 	}
 
+	@GetMapping("/create-word")
+	public String createWord() {
+		return "create-word";
+	}
+
 	// Get List of users Page
 	@GetMapping("/get-list-users")
 

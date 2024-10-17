@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <link rel="stylesheet" th:href="@{/css/style2.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src= "@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/main.min.js}"></script>
+    <script th:src="@{/js/jsencrypt.min.js}"></script>
+    <script th:src="@{/js/publickey.js}"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script th:src= "@{/ajax/create-user.js}"></script>
+    <title>English Words/Sentences</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div th:replace="~{sidebar :: sidebar}">	  </div>
+        <div class="container-fluid">
+            <div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
+            <div class="container" th:fragment="content">
+                <div class="heading-custom">
+                    <section class="center"><h3>English Words/Sentences</h3></section>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+<!--                                <div class="d-flex align-items-center mb-4">-->
+<!--                                    <h4 class="card-title">English Words/Sentences</h4>-->
+<!--                                    <div class="ms-auto">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="mb-3">
+                                    <form>
+                                        <div class="row align-items-center">
+                                            <div class="mb-5 row">
+                                                <label for="catSelect" class="col-sm-4 col-form-label">Main Category</label>
+                                                <div class="col-sm-8">
+                                                    <select id="catSelect" class="form-select">
+                                                        <option selected disabled>Select Main Category</option>
+                                                        <option>
+                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
+                                                            <!--                                                    th:text="${center.centerName}"-->
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-5 row">
+                                                <label for="subSelect" class="col-sm-4 col-form-label">Category</label>
+                                                <div class="col-sm-8">
+                                                    <select id="subSelect" class="form-select">
+                                                        <option selected disabled>Select Category</option>
+                                                        <option>
+                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
+                                                            <!--                                                    th:text="${center.centerName}"-->
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-5 row">
+                                                <label for="subSubSelect" class="col-sm-4 col-form-label">Sub Category</label>
+                                                <div class="col-sm-8">
+                                                    <select id="subSubSelect" class="form-select">
+                                                        <option selected disabled>Select Sub Category</option>
+                                                        <option>
+                                                            <!--                                                    th:each="center : ${getCenters}" th:value="${center.centerId}"-->
+                                                            <!--                                                    th:text="${center.centerName}"-->
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class=" row">
+                                                <label for="wSname" class="col-sm-4 col-form-label">Word/Sentence</label>
+                                                <div class="col-sm-8">
+                                                <textarea class="form-control" id="wSname" placeholder="Word/Sentence"
+                                                  value=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="border border-0 center mt-5">
+                                                <input type="submit" name="submit" value="Add" class="btn btn-primary">
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
