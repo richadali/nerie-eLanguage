@@ -1,54 +1,51 @@
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 
+    <link rel="stylesheet" th:href="@{/css/style3.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/main.min.js}"></script>
+    <script th:src="@{/js/jsencrypt.min.js}"></script>
+    <script th:src="@{/js/login.js}"></script>
+    <script th:src="@{/js/publickey.js}"></script>
+</head>
 <body>
-	<!----------- Footer ------------>
+<!-- Footer -->
 <div class="container my-5">
-  <!-- Footer -->
-  <footer class="text-center footer-custom">
-    <!-- Grid container -->
-    <div class="container">
-      <!-- Section: Links -->
-      <section class="mt-5">
- 
-        <div class="row text-center d-flex justify-content-center pt-5">
+    <footer class="text-center footer-custom">
+        <!-- Section: Logos -->
+        <section class="mb-3">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-3 col-sm-8 footer-social d-flex">
+                    <div class="d-inline-block align-self-center">
+                        <p class="bg-light logo-bg"><img th:src="@{/images/NIC.png}" alt="NIC logo"></p>
+                    </div>
+                </div>
 
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="/contact-us" class="nav-link">Contact Us</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
+                <div class="col-md-3 col-sm-8 footer-social d-flex">
+                    <div class="d-inline-block align-self-center">
+                        <p class="bg-light logo-bg mb-0"><img th:src="@{/images/digital-india.png}" alt="Digital India logo"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-4" />
+
+        <!-- Footer Text -->
+        <div class="text-center p-3 text-menu">
+            DESIGNED AND DEVELOPED BY NIC MEGHALAYA
         </div>
-      </section>
-
-
-      <hr class="my-5" />
-      
-      <section class="mb-10">
-        <div class="row d-flex justify-content-center">
-        <div class="col-md-3 col-sm-8 footer-social d-flex">
-       			<div class="d-inline-block align-self-center">
-        			<p class="bg-light"><img th:src="@{/images/NIC.png}" alt="NIC logo"></p>
-        		</div>
-	     </div>
-	     
-	     <div class="col-md-3 col-sm-8 footer-social d-flex">
-       			<div class="d-inline-block align-self-center">
-        			<p class="bg-light mb-0"><img th:src="@{/images/digital-india.png}" alt="digital india logo"></p>
-        		</div>
-	      </div>
-        </div>
-      </section>
- 
-    </div>
-
-    <div class="text-center p-3 text-menu">
-      DESIGNED AND DEVELOPED BY NIC MEGHALAYA
-    </div>
-  </footer>
-
+    </footer>
 </div>
-<!-- End of .container -->
 </body>
+
+</html>

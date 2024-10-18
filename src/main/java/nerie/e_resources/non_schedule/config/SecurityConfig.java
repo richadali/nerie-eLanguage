@@ -53,7 +53,7 @@ public class SecurityConfig {
 		})
 
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/nerie/e-resources/english-words/**").permitAll()
+						.requestMatchers("/nerie/e-resources/english-words/**","/nerie-eresources-home/**","/about-us","/language&social-science","/pdf/**").permitAll()
 						.requestMatchers("/contact-us", "/nerie/e-resources/get-captcha",
 								"/nerie/e-resources/get-publickey", "/images/**", "/css/**", "/js/**", "/static/**",
 								"/resources/**", "/.*.png", "/.*.svg", "/.*.css", "/.*.js", "/.*.min.js", "/.*.ico",
