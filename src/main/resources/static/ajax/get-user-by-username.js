@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-	alert("in");
 	
 	var token = $("meta[name='_csrf']").attr("content"); 
 	var header = $("meta[name='_csrf_header']").attr("content");
@@ -14,7 +13,6 @@ $(document).ready(function() {
 		            xhr.setRequestHeader(header, token);
 		        },
                 success: function(res) {
-					alert(res);
                 	var result = JSON.parse(res.split("/*").join("").split("*/").join(""));
                 	var userInfo='<tr>';
                 	var otherInfo='<tr>';

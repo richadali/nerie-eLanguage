@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <link rel="stylesheet" th:href="@{/css/style2.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/datatable.css}" />
+
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src= "@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/main.min.js}"></script>
+    <script th:src="@{/js/jsencrypt.min.js}"></script>
+    <script th:src="@{/js/publickey.js}"></script>
+    <script th:src="@{/js/datatable.js}"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src= "@{/ajax/create-word.js}"></script>
+    <title>Translate Words/Sentences</title>
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="~{sidebar :: sidebar}"></div>
+    <div class="container-fluid">
+        <div th:insert="~{navbar-menu :: navbar-menu}"></div>
+        <div class="container" th:fragment="content">
+            <div class="heading-custom">
+                <section class="center"><h3>Translate Words/Sentences</h3></section>
+            </div>
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="translate-form">
+                                    <!-- State Dropdown -->
+                                    <div class="mb-5 row">
+                                        <label for="stateSelect" class="col-sm-4 col-form-label">State*</label>
+                                        <div class="col-sm-8">
+                                            <select id="stateSelect" class="form-select">
+                                                <option selected disabled>Select State</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Language Dropdown -->
+                                    <div class="mb-5 row">
+                                        <label for="languageSelect" class="col-sm-4 col-form-label">Language*</label>
+                                        <div class="col-sm-8">
+                                            <select id="languageSelect" class="form-select">
+                                                <option selected disabled>Select Language</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Radio Buttons for Words/Sentences -->
+                                    <div class="mb-5 row">
+                                        <label class="col-sm-4 col-form-label">Type*</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="typeOptions" id="wordsOption" value="words">
+                                                <label class="form-check-label" for="wordsOption">Words</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="typeOptions" id="sentencesOption" value="sentences">
+                                                <label class="form-check-label" for="sentencesOption">Sentences</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Word/Sentence Dropdown -->
+                                    <div class="mb-5 row">
+                                        <label for="wordSentenceSelect" class="col-sm-4 col-form-label">Select Word/Sentence*</label>
+                                        <div class="col-sm-8">
+                                            <select id="wordSentenceSelect" class="form-select">
+                                                <option selected disabled>Select Word/Sentence</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Translated Word Input -->
+                                    <div class="mb-5 row">
+                                        <label for="translatedWord" class="col-sm-4 col-form-label">Translated Word/Sentence*</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="translatedWord" placeholder="Translated Word/Sentence">
+                                        </div>
+                                    </div>
+
+                                    <!-- Audio File Input -->
+                                    <div class="mb-5 row">
+                                        <label for="audioFile" class="col-sm-4 col-form-label">Upload Audio</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" class="form-control" id="audioFile" accept="audio/*">
+                                        </div>
+                                    </div>
+
+                                    <!-- Video File Input -->
+                                    <div class="mb-5 row">
+                                        <label for="videoFile" class="col-sm-4 col-form-label">Upload Video</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" class="form-control" id="videoFile" accept="video/*">
+                                        </div>
+                                    </div>
+
+                                    <!-- Save Button -->
+                                    <div class="border border-0 center mt-5">
+                                        <input type="submit" name="submit" value="Save" class="btn btn-primary">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

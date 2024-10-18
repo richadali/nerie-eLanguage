@@ -107,10 +107,17 @@
 				</div>
 			</li>
 
-			<li class="nav-item mb-3">
+			<li sec:authorize="hasAnyRole('SUPERADMIN', 'ADMIN')" class="nav-item mb-3">
 				<a class="nav-link d-flex align-items-center" th:href="@{/nerie/e-resources/create-word}">
 					<i class="fas fa-file-alt fa-fw icon-color text-light me-2"></i>
 					<span class="text-light">Word Input</span>
+				</a>
+			</li>
+
+			<li  class="nav-item mb-3">
+				<a class="nav-link d-flex align-items-center" th:href="@{/nerie/e-resources/translate-word-sentences}">
+					<i class="fas fa-file-alt fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">Translate Word</span>
 				</a>
 			</li>
 
