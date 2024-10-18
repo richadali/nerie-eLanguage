@@ -45,6 +45,13 @@ public class PageController {
 		return "create-word";
 	}
 
+
+	//	Index
+	@GetMapping("/")
+	public String home() {
+		return "nerie-eresources-home";
+	}
+
 	// Dashboard
 	@GetMapping(value = "/dashboard")
 	public String dashboard(HttpServletRequest req) {
