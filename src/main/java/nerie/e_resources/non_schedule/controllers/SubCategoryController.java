@@ -1,4 +1,4 @@
-package nerie.e_resources.non_schedule.controller;
+package nerie.e_resources.non_schedule.controllers;
 
 import nerie.e_resources.non_schedule.entity.SubCategory;
 import nerie.e_resources.non_schedule.service.SubCategoryService;
