@@ -52,6 +52,11 @@ public class UserController {
 		return "create-word";
 	}
 
+	@GetMapping(value = "/translate-word-sentences")
+	public String translate() {
+		return "translate-word";
+	}
+
 	// Get List of users Page
 	@GetMapping("/get-list-users")
 
