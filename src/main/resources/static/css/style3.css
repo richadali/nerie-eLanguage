@@ -75,11 +75,10 @@ p.text-muted {
 
 /* Add background image to the body */
 body {
-  /*background-image: url('/images/info-bg.png');*/ /* Replace with your image path */
-  background-size: cover; /* Makes the image cover the entire background */
-  background-position: center center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  background-color: #e5e5f7;
+
+  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
 }
 
 /* Styling for the middle paragraph */
@@ -186,4 +185,6 @@ h3.text-primary {
     .btn-view-download {
       margin-top: 1rem;
     }
+
+
 

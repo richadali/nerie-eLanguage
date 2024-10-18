@@ -47,11 +47,4 @@ public class Translation {
         this.setCreatedAt(date);
     }
 
-
-
-
-
-
-
-
 }
