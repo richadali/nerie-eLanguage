@@ -106,5 +106,44 @@
   background: -webkit-gradient(linear, left top, right top, from(#90caf9), color-stop(99%, #047edf)) !important;
   background: linear-gradient(to right, #90caf9, #047edf 99%) !important; }
 
+.custom-card {
+    background: linear-gradient(135deg, #2a428c, #4b6bbf); /* Gradient effect */
+    border-radius: 20px; /* Larger border radius for softer corners */
+    padding: 25px;
+    color: white;
+    width: 100%; /* Full-width within its container */
+    max-width: 350px; /* Ensures cards don't get too wide on large screens */
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-7px); /* More noticeable lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.custom-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px; /* Adds spacing below the heading */
+}
+
+.custom-card h2 {
+    font-size: 40px;
+    margin-top: 15px;
+}
+
+.custom-card .card-text {
+    font-size: 14px;
+    opacity: 0.8; /* Slight transparency for secondary text */
+    margin-top: 10px;
+}
+
+
+    .custom-icon {
+        font-size: 36px;
+        color: #ffffffaa; /* Slightly lighter icon color */
+        float: right;
+    }
 
 
