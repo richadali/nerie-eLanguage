@@ -51,4 +51,19 @@ public class PageController {
 		return "dashboard";
 	}
 
+	@GetMapping(value = "/nerie-eresources-home")
+	public String e_resources(HttpServletRequest req) {
+		return "nerie-eresources-home";
+	}
+
+	@GetMapping(value = "/about-us")
+	public String about_us(HttpServletRequest req) {
+		return "about-us";
+	}
+
+	@GetMapping(value = "/language&social-science")
+	public String language_social_science(HttpServletRequest req) {
+		return "lang-socialscien";
+	}
+
 }

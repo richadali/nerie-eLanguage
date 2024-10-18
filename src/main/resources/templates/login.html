@@ -8,6 +8,7 @@
 	  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 
 	  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+	  <link rel="stylesheet" th:href="@{/css/style3.css}" />
 	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 	  <link rel="stylesheet" th:href="@{/css/base.css}" />
 	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
@@ -25,10 +26,10 @@
 
 <body>
 
-	<div th:insert="~{navbar :: navbar}">  </div>
+<!--	<div th:insert="~{navbar :: navbar}">  </div>-->
 
 	<!-- error message -->
-	<div th:if="${param.error}">
+	<div th:if="${param.error}" class="m-0">
 		<div class="alert alert-danger">Invalid username/password or Captcha</div>
 	</div>
 

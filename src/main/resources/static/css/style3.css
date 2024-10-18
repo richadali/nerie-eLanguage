@@ -1,0 +1,189 @@
+body {
+  font-family: 'Arial', sans-serif; /* Change font if desired */
+  background-color: #f8f9fa; /* Light background */
+}
+
+.footer {
+  font-family: 'Arial', sans-serif; /* Change font if desired */
+  background-color: #f8f9fa; /* Light background */
+}
+
+header {
+  background-color: #2a428c; /* Header background */
+  color: white; /* Header text color */
+}
+
+.logo {
+  height: 60px; /* Adjust logo size */
+}
+
+.navbar {
+  margin-bottom: 20px; /* Space below the navbar */
+}
+
+.navbar-nav .nav-link {
+  transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #e9ecef; /* Highlight on hover */
+}
+
+h3 {
+  border-bottom: 2px solid #2a428c; /* Underline for headings */
+  padding-bottom: 5px; /* Spacing below headings */
+}
+
+.list-group-item {
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef; /* Highlight on hover */
+}
+
+.quick-links {
+  background-color: #ffffff; /* Background for quick links */
+  padding: 15px;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.img-fluid {
+  border-radius: 5px; /* Rounded corners for images */
+}
+
+/* Paragraph styling for middle content */
+p.text-justify {
+  text-align: justify; /* Align text evenly across the line */
+  line-height: 1.6; /* Increase line height for readability */
+  margin-bottom: 20px; /* Add some spacing below */
+}
+
+p.text-justify::first-letter {
+  font-size: 1.2rem; /* Slightly larger first letter */
+  font-weight: bold; /* Bold first letter for emphasis */
+}
+
+p.text-muted {
+  color: #6c757d; /* Use muted color for subtle appearance */
+}
+
+.fs-5 {
+  font-size: 1.25rem; /* Larger font size for easier reading */
+}
+
+/* Add background image to the body */
+body {
+  /*background-image: url('/images/info-bg.png');*/ /* Replace with your image path */
+  background-size: cover; /* Makes the image cover the entire background */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+}
+
+/* Styling for the middle paragraph */
+.styled-text {
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 300;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for h3 headings */
+h3.text-primary {
+  font-weight: 600;
+}
+
+/* List group styles */
+.list-group-item {
+  font-size: 1rem;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Optional: Add some padding to the content container */
+.container.content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency to see background */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer custom styles */
+.footer-custom {
+  background-color: #f8f9fa;
+  padding: 30px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-custom .logo-bg {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-custom img {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.footer-custom .text-menu {
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Ensure footer logos are centered nicely */
+.footer-social {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-custom hr {
+  border-color: #ddd;
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-social img {
+    max-width: 80px;
+  }
+}
+
+.about-us-paragraph {
+      margin-bottom: 2rem; /* Space between sections */
+      padding: 1rem;      /* Padding for inner spacing */
+      border: 1px solid transparent; /* Optional: adds separation */
+      border-radius: 5px; /* Optional: rounded corners */
+      background-color: rgba(173, 216, 230, 0.2); /* Light background for separation */
+    }
+
+  .resource-card {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+    }
+    .resource-card h5 {
+      color: #2a428c;
+    }
+    .btn-view-download {
+      margin-top: 1rem;
+    }
+

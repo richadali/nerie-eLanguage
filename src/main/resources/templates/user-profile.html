@@ -12,8 +12,8 @@
 	  <link rel="stylesheet" th:href="@{/css/base.css}" />
 	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
 
-	  <script th:src="@{/js/popper.min.js}"></script>	
-	  <script th:src= "@{/js/jquery.min.js}"></script>  	  
+	  <script th:src="@{/js/popper.min.js}"></script>
+	  <script th:src= "@{/js/jquery.min.js}"></script>
 	  <script th:src="@{/js/main.min.js}"></script>
 	  <script th:src="@{/js/dashboard.js}"></script>
 	  <script th:src= "@{/ajax/get-user-by-username.js}"></script>
@@ -25,9 +25,9 @@
 	<div th:replace="~{sidebar :: sidebar}">	  </div>
 
  	<div class="container-fluid">
- 		
+
 	<div th:insert="~{navbar-menu :: navbar-menu}">	  </div>
-	
+
 		<div class="container justify-content-center">
 			<br>
 
@@ -36,7 +36,7 @@
 		</div>
 		<br>
 			<!-- User Profile -->
-			<table>		 
+			<table>
 				 <thead>
 				    <tr>
 				      <th scope="col">Username</th>
@@ -47,17 +47,17 @@
 				      <th scope="col">Account active Status</th>
 				    </tr>
 				   </thead>
-				   
+
 				   <tbody id="userInfo">
-					   
+
 				  </tbody>
 			</table>
 			<br>
 			<div class="heading-custom center"><h1>OTHER INFORMATION</h1></div>
 			<br>
-			<table>		 
+			<table>
 				 <thead>
-	
+
 					    <tr>
 					      <th scope="col">Office</th>
 					      <th scope="col">OfficeAddress</th>
@@ -66,12 +66,12 @@
 
 					    </tr>
 				   </thead>
-				   
+
 				   <tbody id="otherInfo">
-					   
+
 				  </tbody>
 			</table>
-	
+
 		</div>
 		</div>
 		</div>
