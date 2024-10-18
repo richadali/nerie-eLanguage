@@ -10,6 +10,7 @@ $(document).ready(function () {
 
                             // Iterate through the response and build table rows
                             $.each(response, function(index, word) {
+
                                 tableContent += '<tr>';
                                 tableContent += '<td class="text-center">' + (index + 1) + '</td>';
                                 tableContent += '<td class="text-center">' + word.englishWord + '</td>';
