@@ -2,94 +2,83 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 <head>
 	<meta charset="UTF-8"/>
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-	  <meta th:name="_csrf" th:content="${_csrf.token}"/>
-	  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<meta th:name="_csrf" th:content="${_csrf.token}"/>
+	<meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 
-	  <link rel="stylesheet" th:href="@{/css/style2.css}" />
-	  <link rel="stylesheet" th:href="@{/css/style3.css}" />
-	  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-	  <link rel="stylesheet" th:href="@{/css/base.css}" />
-	  <link rel="stylesheet" th:href="@{/css/icons.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style2.css}" />
+	<link rel="stylesheet" th:href="@{/css/style3.css}" />
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/base.css}" />
+	<link rel="stylesheet" th:href="@{/css/icons.min.css}" />
 
-	  <script th:src="@{/js/popper.min.js}"></script>
-	  <script th:src= "@{/js/jquery.min.js}"></script>
-	  <script th:src="@{/js/main.min.js}"></script>
-	  <script th:src="@{/js/jsencrypt.min.js}"></script>
-	  <script th:src="@{/js/login.js}"></script>
-	  <script th:src="@{/js/publickey.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/main.min.js}"></script>
+	<script th:src="@{/js/jsencrypt.min.js}"></script>
+	<script th:src="@{/js/login.js}"></script>
+	<script th:src="@{/js/publickey.js}"></script>
 
 </head>
 
-	</head>
-
 <body>
 
-<!--	<div th:insert="~{navbar :: navbar}">  </div>-->
-
-	<!-- error message -->
-	<div th:if="${param.error}">
-		<div class="alert alert-danger">Invalid username/password or Captcha</div>
+<!-- Error message -->
+<div th:if="${param.error}">
+	<div class="alert alert-danger">Invalid username/password or Captcha</div>
+</div>
+<div class="col-lg-12 mb-4">
+	<div class="card shadow-lg">
+		<div class="card-body text-center">
+			<h1 class="text-custom">Language e-resources</h1>
+			<h4 class="text-custom">in Non-scheduled Language (North East Region)</h4>
+		</div>
 	</div>
+</div>
 
-	<div class="b-bg-image">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 d-flex">
-					<div class="d-block px-5 pt-5 pb-4 border-bottom-0">
-						<h1 class="text-right mt-5 text-custom">Language e-resources</h1>
-						<h4 class="text-custom"> in Non-scheduled Language (North East Region)</h4>
-					</div>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<!-- Card for Project Name -->
+
+		<!-- Card for Login Form -->
+		<div class="col-lg-4 mb-4">
+			<div class="card shadow-lg">
+				<div class="card-body">
+					<h2 class="b-login-head text-center">Log In</h2>
+					<form name="login-form" id="login-form" th:action="@{/login/process}" method="post" th:object="${request}" autocomplete="off" class="px-4">
+						<div class="form-group mb-3">
+							<label for="username" class="text-custom">Username:</label>
+							<input type="text" class="form-control" id="username" placeholder="Enter username" name="username" maxlength="20" required title="Username is required. Minimum 6 and maximum 20 characters is allowed.">
+						</div>
+						<div class="form-group mb-3">
+							<label for="password" class="text-custom">Password:</label>
+							<input id="password" type="password" class="form-control" placeholder="Enter password" name="password" maxlength="250" required title="Password is required. Minimum 6 and maximum 250 characters is allowed.">
+						</div>
+
+						<!-- Captcha Section -->
+						<div class="form-group mb-4 text-center">
+							<div id="captchaImage" class="mb-3"></div>
+							<label for="captcha" class="text-custom">Enter Captcha:</label>
+							<input id="captcha" type="text" class="form-control mb-3" placeholder="Enter Captcha" name="captcha" maxlength="6" required>
+							<button id="refresh-button" class="btn btn-secondary btn-sm mb-2"><i class="fa">&#xf021;</i> Refresh</button>
+						</div>
+
+						<!-- CSRF Token -->
+						<input type="hidden" name="${_csrf_header}" value="${_csrf}" />
+
+						<!-- Submit Button -->
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary btn-block">Log In</button>
+						</div>
+					</form>
 				</div>
-
-				<br>
-				<div class="col-lg-6 b-login-sec">
-					<div class="d-block px-5 pt-5 pb-4 border-bottom-0">
-						<h2 class="b-login-head">Log In</h2>
-					</div>
-
-					<div class="">
-					<form name="login-form" id="login-form" th:action = "@{/login/process}" method="post" th:object="${request}" autocomplete="off" class="px-5">
-							<div class="form-group ">
-								<label for="username" class="text-custom">Username:</label>
-								<input type="text" class="form-control" id="username" placeholder="Enter username" name="username" maxlength="20" required title="Username is required. Minimum 6 and maximum 20 characters is allowed.">
-							</div>
-							<div class="form-group">
-								<label for="password" class="text-custom">Password:</label>
-								<input id="password" type="password" class="form-control" placeholder="Enter password" name="password" maxlength="250" required title="Password is required. Minimum 6 and maximum 250 characters is allowed.">
-							</div>
-							</br>
-
-							<div class="row">
-								<div class="col-6 mx-auto">
-    								<div class="d-flex align-items-center justify-content-evenly">
-										<div id="captchaImage"></div>
-											<button id="refresh-button"><i class="icon-color fa">&#xf021;</i></button>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="captcha" class="text-custom">Enter captcha:</label>
-								<input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha" maxlength="6" required>
-							</div>
-
-							<input type="hidden" name="${_csrf_header}" value="${_csrf}" />
-
-							<div class="text-center py-4">
-								<button  type="submit" class="btn btn-primary b-btn">Log In</button>
-							</div>
-
-						</form>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>
-	<div th:insert="~{footer :: footer}">  </div>
+</div>
 
+<div th:insert="~{footer :: footer}">  </div>
 
 </body>
 </html>
