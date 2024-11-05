@@ -1,6 +1,8 @@
 body {
   font-family: 'Arial', sans-serif; /* Change font if desired */
-  background-color: #f8f9fa; /* Light background */
+    background-color: #e5e5f7;
+    background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
 }
 
 .footer {
@@ -73,13 +75,6 @@ p.text-muted {
   font-size: 1.25rem; /* Larger font size for easier reading */
 }
 
-/* Add background image to the body */
-body {
-  background-color: #e5e5f7;
-
-  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
-  background-size: 10px 10px;
-}
 
 /* Styling for the middle paragraph */
 .styled-text {

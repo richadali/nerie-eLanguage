@@ -1,5 +1,7 @@
 package nerie.e_resources.non_schedule.services;
 
+import nerie.e_resources.non_schedule.dto.TranslationDTO;
+import nerie.e_resources.non_schedule.entity.Language;
 import nerie.e_resources.non_schedule.entity.Translation;
 import nerie.e_resources.non_schedule.repository.TranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Service
 public class TranslationService {
@@ -40,5 +43,9 @@ public class TranslationService {
         Path path = Paths.get(storagePath, fileName);
         Files.write(path, file.getBytes());
         return fileName;
+    }
+
+    public List<Translation> getTranslationsByLanguageId(Long languageId) {
+        return translationRepository.findByLanguageId(languageId); // Fetch translations by language ID
     }
 }

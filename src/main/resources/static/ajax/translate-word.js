@@ -1,14 +1,13 @@
 $(document).ready(function() {
+    // Load states into the dropdown
     $.ajax({
         url: '/nerie/e-resources/states/all',
         type: 'GET',
         success: function(data) {
-            var stateSelect = $('#stateSelect');
-            stateSelect.empty();
-            stateSelect.append('<option selected disabled>Select State</option>'); // Default option
-
+            const stateSelect = $('#stateSelect');
+            stateSelect.empty().append('<option selected disabled>Select State</option>');
             $.each(data, function(index, state) {
-                stateSelect.append('<option value="' + state.id + '">' + state.stateName + '</option>');
+                stateSelect.append(`<option value="${state.id}">${state.stateName}</option>`);
             });
         },
         error: function(xhr, status, error) {
@@ -16,21 +15,18 @@ $(document).ready(function() {
         }
     });
 
-
+    // Load languages based on selected state
     $('#stateSelect').change(function() {
-        var stateId = $(this).val(); // Get selected state ID
-
+        const stateId = $(this).val();
         if (stateId) {
             $.ajax({
-                url: '/nerie/e-resources/languages/by-state/' + stateId,
+                url: `/nerie/e-resources/languages/by-state/${stateId}`,
                 type: 'GET',
                 success: function(data) {
-                    var languageSelect = $('#languageSelect');
-                    languageSelect.empty();
-                    languageSelect.append('<option selected disabled>Select Language</option>'); // Default option
-
+                    const languageSelect = $('#languageSelect');
+                    languageSelect.empty().append('<option selected disabled>Select Language</option>');
                     $.each(data, function(index, language) {
-                        languageSelect.append('<option value="' + language.id + '">' + language.languageName + '</option>');
+                        languageSelect.append(`<option value="${language.id}">${language.languageName}</option>`);
                     });
                 },
                 error: function(xhr, status, error) {
@@ -40,83 +36,103 @@ $(document).ready(function() {
         }
     });
 
+    // Load words/sentences data initially
     $.ajax({
-                url: '/nerie/e-resources/english-words/all',
-                method: 'GET',
-                success: function (data) {
-                console.log(data);
-                    // Store the data in a global variable for reuse
-                    window.wordsAndSentences = data;
-                    // Initially, show nothing until a type is selected
-                    $('#wordSentenceSelect').html('<option selected disabled>Select Word/Sentence</option>');
-                },
-                error: function () {
-                    console.error('Failed to load words and sentences');
-                }
+        url: '/nerie/e-resources/english-words/all',
+        method: 'GET',
+        success: function(data) {
+            window.wordsAndSentences = data;
+            $('#englishWord').html('<option selected disabled>Select Word/Sentence</option>');
+        },
+        error: function() {
+            console.error('Failed to load words and sentences');
+        }
     });
 
-    // Event listener for radio button selection
-        $('input[name="typeOptions"]').on('change', function () {
-            const selectedType = $(this).val(); // Get selected value: 'words' or 'sentences'
-            const data = window.wordsAndSentences || [];
+    // Handle selection of Words/Sentences type
+    $('input[name="typeOptions"]').on('change', function() {
+        const selectedType = $(this).val();
+        const data = window.wordsAndSentences || [];
+        let options = '';
 
-            // Clear the dropdown before populating new options
-            $('#wordSentenceSelect').html('<option selected disabled>Select Word/Sentence</option>');
-
-            let options = '';
-
-            // Filter based on the selected option
-            if (selectedType === 'words') {
-                data.forEach(function (item) {
-                    // Assuming the item has a category field with a category ID
-                    if (item.category && item.category.id === 11) { // Adjust based on your actual data structure
-                        options += `<option value="${item.id}">${item.englishWord}</option>`;
-                    }
-                });
-            } else if (selectedType === 'sentences') {
-                data.forEach(function (item) {
-                    // Assuming the item does not have a category ID of 33
-                    if (item.category && item.category.id !== 11) { // Adjust based on your actual data structure
-                        options += `<option value="${item.id}">${item.englishWord}</option>`;
-                    }
-                });
+        // Clear the dropdown and populate with relevant options
+        $('#englishWord').html('<option selected disabled>Select Word/Sentence</option>');
+        data.forEach(function(item) {
+            if ((selectedType === 'words' && item.category.id === 11) ||
+                (selectedType === 'sentences' && item.category.id !== 11)) {
+                options += `<option value="${item.id}">${item.englishWord}</option>`;
             }
-
-            // Update the dropdown with the filtered data
-            $('#wordSentenceSelect').html(options);
         });
+        $('#englishWord').html(options);
+    });
 
+    // Form submission handling
+    $('#translate-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent form from reloading the page
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const translateForm = document.getElementById('translate-form');
+        // Get CSRF token and header name from meta tags
+        const csrfToken = $('meta[name="_csrf"]').attr('content');
+        const csrfHeaderName = $('meta[name="_csrf_header"]').attr('content');
 
-            translateForm.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent the default form submission
+        // Fetch the user ID before submitting the form
+        $.ajax({
+            type: "POST",
+            url: "/nerie/e-resources/get-user-by-username",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfToken); // Set CSRF token
+            },
+            success: function(res) {
+                console.log('Response:', res); // Log the raw response
+                try {
+                    const result = JSON.parse(res.split("/*").join("").split("*/").join(""));
+                    const userId = result.id; // Assuming your API response has an 'id' field
 
-                // Create a FormData object to hold form data
-                const formData = new FormData(translateForm);
+                    const formData = new FormData(document.getElementById('translate-form'));
+                    formData.append('userId', userId); // Add userId to formData
 
-                // Send AJAX request to the server
-                fetch('/nerie/e-resources/translation/create', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    // Check if the response is okay (status in the range 200-299)
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.statusText);
+                    // Ensure ID is included, e.g. if needed:
+                    const translationId = $('#translationId').val(); // Assuming you have a hidden input for translation ID
+                    if (translationId) {
+                        formData.append('id', translationId); // Append the ID if it exists
                     }
-                    return response.text(); // Assuming the response is text (could be JSON)
-                })
-                .then(data => {
-                    alert(data); // Show success message
-                    translateForm.reset(); // Reset the form after success
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                    alert('Error: ' + error.message); // Show error message
-                });
-            });
-        });
 
+                    // Log each key-value pair in the FormData
+                    for (let [key, value] of formData.entries()) {
+                        console.log(key + ': ' + value);
+                    }
+
+                    // Use jQuery AJAX to send the POST request with CSRF token and userId
+                    $.ajax({
+                        url: '/nerie/e-resources/translation/create',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,  // Required for FormData
+                        contentType: false,  // Required for FormData
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader(csrfHeaderName, csrfToken); // Set CSRF token in the header
+                        },
+                        success: function(response) {
+                            alert(response); // Display success message
+                            $('#translate-form')[0].reset(); // Reset form
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX error:', error);
+                            alert('Error: ' + xhr.responseText || error); // Display error message
+                        }
+                    });
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
+                    $('#failure').html("Error: Response is not valid JSON.");
+                    $('#failureModal').modal('show');
+                }
+            },
+            error: function(data, status, errorThrown) {
+                $('#failure').html("Error: Unable to get user ID");
+                $('#failureModal').modal('show');
+                event.preventDefault();
+            }
+        });
+    });
 });

@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class Translation {
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

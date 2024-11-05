@@ -121,6 +121,13 @@
 				</a>
 			</li>
 
+			<li sec:authorize="hasAnyRole('CONTENTMANAGER')" class="nav-item mb-3">
+				<a class="nav-link d-flex align-items-center" th:href="@{/nerie/e-resources/translated-words}">
+					<i class="fas fa-language fa-fw icon-color text-light me-2"></i>
+					<span class="text-light">View Translated Words</span>
+				</a>
+			</li>
+
 			<li sec:authorize="hasAnyRole('SUPERADMIN')" class="nav-item dropdown mb-3">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
 					<i class="fas fa-list fa-fw icon-color text-light me-2"></i>

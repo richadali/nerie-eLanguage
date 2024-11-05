@@ -54,7 +54,7 @@
                                     <div class="mb-5 row">
                                         <label for="languageSelect" class="col-sm-4 col-form-label">Language*</label>
                                         <div class="col-sm-8">
-                                            <select id="languageSelect" class="form-select">
+                                            <select id="languageSelect" name="language" class="form-select">
                                                 <option selected disabled>Select Language</option>
                                             </select>
                                         </div>
@@ -77,9 +77,9 @@
 
                                     <!-- Word/Sentence Dropdown -->
                                     <div class="mb-5 row">
-                                        <label for="wordSentenceSelect" class="col-sm-4 col-form-label">Select Word/Sentence*</label>
+                                        <label for="englishWord" class="col-sm-4 col-form-label">Select Word/Sentence*</label>
                                         <div class="col-sm-8">
-                                            <select id="wordSentenceSelect" class="form-select">
+                                            <select id="englishWord" name="englishWord" class="form-select">
                                                 <option selected disabled>Select Word/Sentence</option>
                                             </select>
                                         </div>
@@ -89,7 +89,7 @@
                                     <div class="mb-5 row">
                                         <label for="translatedWord" class="col-sm-4 col-form-label">Translated Word/Sentence*</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="translatedWord" placeholder="Translated Word/Sentence">
+                                            <input type="text" class="form-control" name="translatedWord" id="translatedWord" placeholder="Translated Word/Sentence">
                                         </div>
                                     </div>
 
@@ -97,7 +97,7 @@
                                     <div class="mb-5 row">
                                         <label for="audioFile" class="col-sm-4 col-form-label">Upload Audio</label>
                                         <div class="col-sm-8">
-                                            <input type="file" class="form-control" id="audioFile" accept="audio/*">
+                                            <input type="file" class="form-control" id="audioFile" name="audioFile" accept="audio/*">
                                         </div>
                                     </div>
 
@@ -105,7 +105,7 @@
                                     <div class="mb-5 row">
                                         <label for="videoFile" class="col-sm-4 col-form-label">Upload Video</label>
                                         <div class="col-sm-8">
-                                            <input type="file" class="form-control" id="videoFile" accept="video/*">
+                                            <input type="file" class="form-control" id="videoFile" name="videoFile" accept="video/*">
                                         </div>
                                     </div>
 

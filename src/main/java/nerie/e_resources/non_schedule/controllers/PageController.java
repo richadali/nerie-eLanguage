@@ -28,6 +28,7 @@ public class PageController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			System.out.println("Auth data" + auth);
 			return "redirect:/dashboard";
 		}
 		return "login";
@@ -55,6 +56,7 @@ public class PageController {
 	// Dashboard
 	@GetMapping(value = "/dashboard")
 	public String dashboard(HttpServletRequest req) {
+		System.out.println(req.toString());
 		return "dashboard";
 	}
 
