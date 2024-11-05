@@ -20,27 +20,25 @@
 	<script th:src="@{/js/login.js}"></script>
 	<script th:src="@{/js/publickey.js}"></script>
 
+	<style>
+        .form-group {
+            margin-bottom: 1.5rem; /* Adjusted for spacing between input fields */
+        }
+    </style>
 </head>
 
 <body>
-
-<!-- Error message -->
-<div th:if="${param.error}">
-	<div class="alert alert-danger">Invalid username/password or Captcha</div>
-</div>
 <div class="col-lg-12 mb-4">
 	<div class="card shadow-lg">
 		<div class="card-body text-center">
-			<h1 class="text-custom">Language e-resources</h1>
-			<h4 class="text-custom">in Non-scheduled Language (North East Region)</h4>
+			<h2 class="text-custom">Language e-resources</h2>
+			<h5 class="text-custom">in Non-scheduled Language (North East Region)</h5>
 		</div>
 	</div>
 </div>
 
 <div class="container mt-5">
 	<div class="row justify-content-center">
-		<!-- Card for Project Name -->
-
 		<!-- Card for Login Form -->
 		<div class="col-lg-4 mb-4">
 			<div class="card shadow-lg">
@@ -51,34 +49,45 @@
 							<label for="username" class="text-custom">Username:</label>
 							<input type="text" class="form-control" id="username" placeholder="Enter username" name="username" maxlength="20" required title="Username is required. Minimum 6 and maximum 20 characters is allowed.">
 						</div>
-						<div class="form-group mb-3">
+						<div class="form-group">
 							<label for="password" class="text-custom">Password:</label>
 							<input id="password" type="password" class="form-control" placeholder="Enter password" name="password" maxlength="250" required title="Password is required. Minimum 6 and maximum 250 characters is allowed.">
 						</div>
 
 						<!-- Captcha Section -->
-						<div class="form-group mb-4 text-center">
-							<div id="captchaImage" class="mb-3"></div>
+						<div class="form-group mb-3 mt-3">
+							<div class="d-flex justify-content-between align-items-center mb-2" id="captchaImageContainer">
+								<div id="captchaImage" class="flex-grow-1">
+									<!-- CAPTCHA Image will go here -->
+								</div>
+								<button type="button" id="refresh-button" class="btn btn-secondary d-flex justify-content-center align-items-center" onclick="refreshCaptcha()">
+									<i class="fa">&#xf021;</i>
+								</button>
+							</div>
 							<label for="captcha" class="text-custom">Enter Captcha:</label>
-							<input id="captcha" type="text" class="form-control mb-3" placeholder="Enter Captcha" name="captcha" maxlength="6" required>
-							<button id="refresh-button" class="btn btn-secondary btn-sm mb-2"><i class="fa">&#xf021;</i> Refresh</button>
+							<div class="input-group">
+								<input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha" maxlength="6" required>
+							</div>
+						</div>
+
+						<div th:if="${param.error}">
+							<div class="alert alert-danger">Invalid username/password or Captcha</div>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary btn-block">Log In</button>
 						</div>
 
 						<!-- CSRF Token -->
 						<input type="hidden" name="${_csrf_header}" value="${_csrf}" />
 
-						<!-- Submit Button -->
-						<div class="text-center">
-							<button type="submit" class="btn btn-primary btn-block">Log In</button>
-						</div>
+						<!-- Debugging Info (Optional) -->
+						<div class="text-danger" id="debug-info"></div>
+
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div th:insert="~{footer :: footer}">  </div>
-
 </body>
 </html>

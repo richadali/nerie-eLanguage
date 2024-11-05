@@ -24,6 +24,7 @@ $(document).ready(function() {
 	  var encryptedPassword = en.encrypt(pwd);
 	  
 	  $('#password').val(encryptedPassword);
+	   console.log('CAPTCHA Value:', $("#captcha").val());
       loginForm.submit();
     
     }
