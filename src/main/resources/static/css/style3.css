@@ -186,5 +186,32 @@ h3.text-primary {
       margin-top: 1rem;
     }
 
+      #captchaImageContainer {
+                 width: 100%; /* Ensure it takes the full width */
+             }
 
+             #captchaImage {
+                 width: 100%; /* Ensure it fills the available space */
+                 height: 38px; /* Set height to match the input field */
+                 overflow: hidden;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 border: 1px solid #ccc; /* Optional border */
+                 border-radius: 8px; /* Optional rounded corners */
+             }
+
+             #captchaImage img {
+                 width: 100%; /* Fill the container */
+                 height: 100%; /* Fill the container */
+                 object-fit: cover; /* Maintain aspect ratio */
+                 border-radius: 8px; /* Match the border radius */
+             }
+
+             #refresh-button {
+                 height: 38px; /* Match the height of the captcha image */
+                 width: 40px; /* Set a small width for the button */
+                 padding: 0; /* Remove padding to minimize space usage */
+                 margin-left: 5px; /* Add a little space between the image and button */
+             }
 
