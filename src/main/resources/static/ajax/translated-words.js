@@ -94,22 +94,38 @@ $(document).ready(function() {
                     $('#translationsTable').DataTable(); // Reinitialize DataTable
                     $('#translationsTable').show(); // Show the table after fetching translations
 
-                    // Event listener for audio buttons
-                    $('.play-audio').click(function() {
-                        const audioSrc = $(this).data('audio');
-                        const audioPlayer = new Audio(`D:/Development Work/NIC Shillong/nerie-elanguage/audio_video/${audioSrc}`);
-                        audioPlayer.play();
-                    });
+                    // When the play audio button is clicked
+                        $('.play-audio').click(function() {
+                            const audioSrc = $(this).data('audio'); // Get audio source from data attribute
+                            const audioUrl = `${audioSrc}`; // Create audio URL
+                            console.log("Audio URL:", audioUrl); // Debug log
+                            $('#audioPlayer').attr('src', audioUrl).show(); // Set the audio player's source and show it
+                            $('#videoPlayer').hide(); // Hide the video player
+                            $('#mediaModal').modal('show'); // Show the modal
 
-                    // Event listener for video buttons
-                    $('.play-video').click(function() {
-                        const videoSrc = $(this).data('video');
-                        const videoPlayer = document.createElement('video');
-                        videoPlayer.src = `D:/Development Work/NIC Shillong/nerie-elanguage/audio_video/${videoSrc}`;
-                        videoPlayer.controls = true;
-                        document.body.appendChild(videoPlayer);
-                        videoPlayer.play();
-                    });
+                            // Play the audio
+                            $('#audioPlayer')[0].play();
+                        });
+
+                        // When the play video button is clicked
+                        $('.play-video').click(function() {
+                            const videoSrc = $(this).data('video'); // Get video source from data attribute
+                            const videoUrl = `${videoSrc}`; // Create video URL
+                            console.log("Video URL:", videoUrl); // Debug log
+                            $('#videoPlayer').attr('src', videoUrl).show(); // Set the video player's source and show it
+                            $('#audioPlayer').hide(); // Hide the audio player
+                            $('#mediaModal').modal('show'); // Show the modal
+
+                            // Play the video
+                            $('#videoPlayer')[0].play();
+                        });
+
+                        // Reset audio and video players when the modal is hidden
+                        $('#mediaModal').on('hidden.bs.modal', function () {
+                            $('#audioPlayer').attr('src', '').hide(); // Reset audio player
+                            $('#videoPlayer').attr('src', '').hide(); // Reset video player
+                        });
+
                 },
                 error: function(xhr, status, error) {
                     $('#loader').hide(); // Hide loader on error

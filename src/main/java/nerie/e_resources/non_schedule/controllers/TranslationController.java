@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -31,7 +32,14 @@ public class TranslationController {
             @RequestParam("userId") UUID userId) {
 
         try {
-            // Create the Translation object without specifying an id
+            // Check if a translation already exists for this englishWordId and userId
+            Optional<Translation> existingTranslation = translationService.findTranslationByEnglishWordAndUser(englishWordId, userId);
+
+            if (existingTranslation.isPresent()) {
+                return new ResponseEntity<>("Duplicate translation: A translation for this word by the same user already exists.", HttpStatus.CONFLICT);
+            }
+
+            // Create and save the new translation
             Translation translation = Translation.builder()
                     .englishWordsSentences(EnglishWordsSentences.builder().id(englishWordId).build())
                     .language(Language.builder().id(languageId).build())
@@ -39,7 +47,6 @@ public class TranslationController {
                     .user(User.builder().Id(userId).build())
                     .build();
 
-            // Save the translation using the service
             translationService.saveTranslation(translation, audioFile, videoFile);
             return new ResponseEntity<>("Translation created successfully", HttpStatus.CREATED);
 
